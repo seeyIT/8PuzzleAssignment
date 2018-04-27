@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RankingActivity" />
+        <activity
+            android:name=".PreGameActivity"
+            android:label="@string/title_activity_pre_game"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".GameActivity"></activity>
     </application>
 
 </manifest>
