@@ -11,13 +11,17 @@ import android.graphics.Point
 import android.os.Handler
 import android.view.Display
 import android.view.View
+import android.graphics.drawable.TransitionDrawable
+import android.graphics.drawable.ColorDrawable
+
+
 
 
 class GameActivity : AppCompatActivity() {
 
     private val array = ArrayList<ImageView>()
     private var tileSize: Int = 0
-    private var time:Long = 0
+    private var time: Int = 0
     private lateinit var handler: Handler
     private lateinit var runnable:Runnable
 
@@ -75,13 +79,56 @@ class GameActivity : AppCompatActivity() {
         runnable = Runnable {
             time += 1
             handler.postDelayed(runnable,100)
-            timer_text_view.text = time.toString()
+            setTime()
+//            val color = arrayOf(resources.getDrawable(R.drawable.sunset), resources.getDrawable(R.drawable.images))
+//            val trans = TransitionDrawable(color)
+//            tile_0.background = trans
+//            trans.startTransition(3000)
+//
+//            val color2 = arrayOf(resources.getDrawable(R.drawable.images), resources.getDrawable(R.drawable.sunset))
+//            val trans2 = TransitionDrawable(color2)
+//            tile_1.background = trans2
+//            trans2.startTransition(3000)
         }
+    }
+
+    private fun getFormatedTime(): String {
+        var timeCopy = time
+
+        var minutesString:String
+        var secondsString:String
+
+        val minutes:Int = timeCopy / 600
+        minutesString = if(minutes < 10){
+            "0" + minutes.toString()
+        } else {
+            minutes.toString()
+
+        }
+        timeCopy %= 600
+
+        val seconds = timeCopy / 10
+        secondsString = if(seconds < 10){
+            "0" + seconds.toString()
+        } else {
+            seconds.toString()
+
+        }
+        timeCopy %= 10
+
+        val finalTime:String = "$minutesString:$secondsString.$timeCopy"
+
+        return finalTime
+    }
+
+    private fun setTime() {
+        timer_text_view.text = getFormatedTime()
+
     }
 
     private fun startTimer() {
         handler = Handler()
-        handler.postDelayed(runnable,100)
+        handler.postDelayed(runnable,300)
     }
 
     private fun stopTimer() {
