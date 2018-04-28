@@ -34,10 +34,10 @@ class PreGameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pre_game)
 
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -46,6 +46,19 @@ class PreGameActivity : AppCompatActivity() {
         // Set up the ViewPager with the sections adapter.
         container.adapter = mSectionsPagerAdapter
 
+        container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
+            override fun onPageScrollStateChanged(state: Int) {
+                swipe_right_layout.visibility = View.GONE
+
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
+
+            override fun onPageSelected(position: Int) {
+            }
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -100,16 +113,44 @@ class PreGameActivity : AppCompatActivity() {
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_pre_game, container, false)
             val id = arguments.getInt(ARG_SECTION_NUMBER)
-
             when (id) {
-                0 -> rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
-                1 -> rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.tree))
-                2 -> rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.flowe))
-                3 -> rootView.section_image.background = resources.getDrawable(R.drawable.gleise)
-                4 -> rootView.section_image.background = resources.getDrawable(R.drawable.images)
-                5 -> rootView.section_image.background = resources.getDrawable(R.drawable.panoramic)
-                6 -> rootView.section_image.background = resources.getDrawable(R.drawable.pobrane)
-                7 -> rootView.section_image.background = resources.getDrawable(R.drawable.sunset)
+                0 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+                1 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.tree))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.tree))
+                }
+                2 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.flowe))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.flowe))
+                }
+                3 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+                4 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+                5 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+                6 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+                7 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+                8 -> {
+                    rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                    rootView.section_background_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                }
+
             }
             return rootView
         }
