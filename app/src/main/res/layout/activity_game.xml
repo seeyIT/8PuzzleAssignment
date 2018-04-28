@@ -10,23 +10,26 @@
         android:id="@+id/background_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.3"/>
+        android:alpha="0.5"
+        android:scaleType="center" />
 
     <TextView
         android:id="@+id/timer_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColorBlack"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="40sp"
-        android:text="0:00:00" />
+        android:text="0:00:00"
+        android:textColor="@color/textColorBlack"
+        android:textSize="40sp" />
 
     <LinearLayout
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_centerInParent="true"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:padding="1dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,17 +39,20 @@
             <ImageView
                 android:id="@+id/tile_0"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
 
             <ImageView
                 android:id="@+id/tile_1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
 
             <ImageView
                 android:id="@+id/tile_2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,20 +63,24 @@
             <ImageView
                 android:id="@+id/tile_3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
 
             <ImageView
                 android:id="@+id/tile_4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
 
             <ImageView
                 android:id="@+id/tile_5"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -78,18 +88,73 @@
             <ImageView
                 android:id="@+id/tile_6"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
 
             <ImageView
                 android:id="@+id/tile_7"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
 
             <ImageView
                 android:id="@+id/tile_8"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/finish_game_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background_gradient"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+
+            android:layout_margin="4dp"
+            android:text="CONGRATULZT"
+            android:textSize="40sp" />
+
+        <TextView
+android:textColor="@color/textColorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:text="yuo time is is : "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/player_time_result_text_view"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorWhite"
+            android:text="2342342"
+            android:textSize="32sp"/>
+        <EditText
+            android:gravity="center"
+                android:textColor="@color/textColorWhite"
+            android:id="@+id/player_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Your name"
+            android:focusable="true"
+            android:background="@android:color/transparent"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </RelativeLayout>

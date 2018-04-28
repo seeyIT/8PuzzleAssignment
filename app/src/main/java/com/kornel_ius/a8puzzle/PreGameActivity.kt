@@ -55,8 +55,22 @@ class PreGameActivity : AppCompatActivity() {
 
     fun startGame(view: View) {
         val intent = Intent(this, GameActivity::class.java)
-        intent.putExtra("id",container.currentItem)
+        intent.putExtra("imageName",getImageNameFromIndex(container.currentItem))
         startActivity(intent)
+    }
+
+    private fun getImageNameFromIndex(index: Int): String {
+        when (index) {
+            0 -> return "los"
+            1 -> return "tree"
+            2 -> return "flowe"
+            3 -> return "flowe"
+            4 -> return "countryside"
+            5 -> return "countryside"
+            6 -> return "countryside"
+            7 -> return "countryside"
+        }
+        return ""
     }
 
     /**
@@ -87,9 +101,9 @@ class PreGameActivity : AppCompatActivity() {
             val id = arguments.getInt(ARG_SECTION_NUMBER)
 
             when (id) {
-                0 -> rootView.section_image.background = resources.getDrawable(R.drawable.countryside)
-                1 -> rootView.section_image.background = resources.getDrawable(R.drawable.fantasy)
-                2 -> rootView.section_image.background = resources.getDrawable(R.drawable.flowe)
+                0 -> rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.los))
+                1 -> rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.tree))
+                2 -> rootView.section_image.setImageDrawable(resources.getDrawable(R.drawable.flowe))
                 3 -> rootView.section_image.background = resources.getDrawable(R.drawable.gleise)
                 4 -> rootView.section_image.background = resources.getDrawable(R.drawable.images)
                 5 -> rootView.section_image.background = resources.getDrawable(R.drawable.panoramic)
