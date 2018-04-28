@@ -117,44 +117,50 @@
         android:visibility="gone">
 
         <TextView
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorBlack"
-
             android:layout_margin="4dp"
+            android:gravity="center"
             android:text="CONGRATULZT"
+            android:textColor="@color/textColorBlack"
             android:textSize="40sp" />
 
         <TextView
-android:textColor="@color/textColorBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:gravity="center"
             android:text="yuo time is is : "
+            android:textColor="@color/textColorBlack"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/player_time_result_text_view"
-            android:layout_margin="4dp"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorWhite"
-            android:text="2342342"
-            android:textSize="32sp"/>
-        <EditText
+            android:layout_margin="4dp"
             android:gravity="center"
-                android:textColor="@color/textColorWhite"
+            android:text="2342342"
+            android:textColor="@color/textColorWhite"
+            android:textSize="32sp" />
+
+        <EditText
             android:id="@+id/player_name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="Your name"
-            android:focusable="true"
             android:background="@android:color/transparent"
+            android:focusable="true"
+            android:gravity="center"
+            android:hint="Your name"
+            android:textColor="@color/textColorWhite"
             android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addToRanking"
+            android:text="add" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -57,6 +57,7 @@ class PreGameActivity : AppCompatActivity() {
         val intent = Intent(this, GameActivity::class.java)
         intent.putExtra("imageName",getImageNameFromIndex(container.currentItem))
         startActivity(intent)
+        finish()
     }
 
     private fun getImageNameFromIndex(index: Int): String {

@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.TransitionDrawable
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import java.util.*
 
 //import sun.invoke.util.VerifyAccess.getPackageName
@@ -84,7 +85,7 @@ class GameActivity : AppCompatActivity() {
         timerRunnable = Runnable {
             time += 1
             timerHandler.postDelayed(timerRunnable, 100)
-            setTime()
+            setTimeTextView()
 
         }
         addListeners()
@@ -207,11 +208,9 @@ class GameActivity : AppCompatActivity() {
 
     }
 
-    private fun addToRanking() {
 
-    }
 
-    private fun setTime() {
+    private fun setTimeTextView() {
         timer_text_view.text = Utilities.getFormatedTime(time)
 
     }
@@ -234,5 +233,15 @@ class GameActivity : AppCompatActivity() {
         screenHeight = size.y
     }
 
+
+    fun addToRanking(view: View) {
+        if(player_name_edit_text.text.isEmpty()){
+            Toast.makeText(this,"Name is to short",Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val database: MyDBHandler = MyDBHandler(this)
+        database.addGame(Game(player_name_edit_text.text.toString(), time))
+    }
 
 }
