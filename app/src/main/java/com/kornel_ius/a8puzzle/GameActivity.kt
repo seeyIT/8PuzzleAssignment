@@ -13,11 +13,12 @@ import android.view.View
 import android.widget.Toast
 import java.util.*
 import android.content.Intent
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 
 class GameActivity : AppCompatActivity() {
 
-    private val CLICK_DURATION: Int = 100
+    private val CLICK_DURATION: Int = 200
     private val ANIM_DURATION: Long = 300
     private val arrayOfImages = ArrayList<ImageView>()
     private val arrayOfInts = IntArray(9, { it })
@@ -25,10 +26,12 @@ class GameActivity : AppCompatActivity() {
     private var screenHeight: Int = 0
     private var time: Int = 0
     private var emptyField: Int = 8
-    private var gameStarted: Boolean = true
     private var imageName: String = ""
+    private var gameStarted: Boolean = false
     private lateinit var timerHandler: Handler
     private lateinit var timerRunnable: Runnable
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,6 +100,8 @@ class GameActivity : AppCompatActivity() {
         shuffle()
     }
 
+
+
     private fun addListeners() {
         tile_0.setOnClickListener { swap(0) }
         tile_1.setOnClickListener { swap(1) }
@@ -122,35 +127,33 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun swap(first: Int) {
-        if (!canMove(first, emptyField)) {
-            return
-        }
+        var handler = Handler()
+        var runnable = Runnable {
+            if (canMove(first, emptyField)) {
 
-        if (gameStarted) {
-            val firstImage: Drawable = arrayOfImages[first].background
-            val secondImage: Drawable = arrayOfImages[emptyField].background
+                if (gameStarted) {
+                    val firstImage: Drawable = arrayOfImages[first].background
+                    val secondImage: Drawable = arrayOfImages[emptyField].background
 
-            val images1 = arrayOf(firstImage, secondImage)
-            val trans1 = TransitionDrawable(images1)
-            arrayOfImages[first].background = trans1
-            trans1.startTransition(CLICK_DURATION)
+                    arrayOfImages[first].background = secondImage
+                    arrayOfImages[emptyField].background = firstImage
 
-            val images2 = arrayOf(secondImage, firstImage)
-            val trans2 = TransitionDrawable(images2)
-            arrayOfImages[emptyField].background = trans2
-            trans2.startTransition(CLICK_DURATION)
-        }
+                }
 
-        val tempInt: Int = arrayOfInts[first]
-        arrayOfInts[first] = arrayOfInts[emptyField]
-        arrayOfInts[emptyField] = tempInt
-        emptyField = first
+                val tempInt: Int = arrayOfInts[first]
+                arrayOfInts[first] = arrayOfInts[emptyField]
+                arrayOfInts[emptyField] = tempInt
+                emptyField = first
 
-        if (gameStarted) {
-            if (checkWin()) {
-                gameFinish()
+                if (gameStarted) {
+                    if (checkWin()) {
+                        gameFinish()
+                    }
+                }
             }
         }
+        handler.post(runnable)
+
     }
 
 
@@ -161,6 +164,7 @@ class GameActivity : AppCompatActivity() {
             id = resources.getIdentifier(imageName + arrayOfInts[i].toString(), "drawable", packageName)
             arrayOfImages[i].background = resources.getDrawable(id)
         }
+
     }
 
     private fun shuffle() {
@@ -171,6 +175,7 @@ class GameActivity : AppCompatActivity() {
         }
         correctImagesAfterShuffle()
         gameStarted = true
+        hidePopup()
     }
 
     private fun canMove(first: Int, second: Int): Boolean {
