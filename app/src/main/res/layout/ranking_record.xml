@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ranking_row_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/ranking_player_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="playerTEMPtekst" />
 
-    <TextView
-        android:id="@+id/ranking_time"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ranking_row_box"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="timeTEMPtekst" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ranking_place_number"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ranking_player_name"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ranking_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="24sp" />
+    </LinearLayout>
+
 </LinearLayout>

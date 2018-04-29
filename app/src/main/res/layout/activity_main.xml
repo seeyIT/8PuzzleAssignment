@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.4"
-        android:scaleType="center" />
+        android:scaleType="center"
+        android:src="@drawable/land" />
 
     <TextView
         android:id="@+id/game_title_text_view"
@@ -76,7 +77,8 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/start_icon" />
+                android:src="@drawable/start_icon"
+                android:tint="@color/icons_tint" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +100,8 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ranking_icon" />
+                android:src="@drawable/ranking_icon"
+                android:tint="@color/icons_tint" />
         </LinearLayout>
     </LinearLayout>
 

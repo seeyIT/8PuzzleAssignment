@@ -3,21 +3,16 @@ package com.kornel_ius.a8puzzle
 /**
  * Created by Kornel_ius.
  */
-import android.annotation.SuppressLint
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.content.Context
 import android.content.ContentValues
-import android.database.sqlite.SQLiteConstraintException
+import android.util.Log
 
 
-class MyDBHandler(context: Context) :
-                SQLiteOpenHelper(context, DATABASE_NAME,
-                        null, DATABASE_VERSION) {
-//    class UsersDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class MyDBHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-
         private val DATABASE_VERSION = 1
         private val DATABASE_NAME = "8puzzle.db"
         val TABLE_GAMES = "games"
@@ -29,6 +24,7 @@ class MyDBHandler(context: Context) :
 
 
     override fun onCreate(db: SQLiteDatabase) {
+        Log.e("create", "databe")
         val CREATE_RESULT_TABLE = ("CREATE TABLE " +
                 TABLE_GAMES + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY," +
@@ -65,7 +61,7 @@ class MyDBHandler(context: Context) :
         var time: Int = 0
 
         if (cursor!!.moveToFirst()) {
-            while(!cursor.isAfterLast) {
+            while (!cursor.isAfterLast) {
                 playerName = cursor.getString(cursor.getColumnIndex(COLUMN_PLAYERNAME))
                 time = cursor.getInt(cursor.getColumnIndex(COLUMN_TIME))
 
@@ -75,8 +71,6 @@ class MyDBHandler(context: Context) :
         }
         db.close()
 
-
         return games
-
     }
 }
